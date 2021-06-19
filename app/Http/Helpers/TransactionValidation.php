@@ -6,7 +6,7 @@ use DateTime;
 
 class TransactionValidation
 {
-    public $validChars = [
+    public array $validChars = [
         '2',
         '3',
         '4',
@@ -68,7 +68,8 @@ class TransactionValidation
         return $this->validChars[$checkCodePoint];
     }
 
-    public function validateCsvRecord($csv) {
+    public function validateCsvRecord($csv)
+    {
         if (!isset($csv[0])) {
             return false;
         }

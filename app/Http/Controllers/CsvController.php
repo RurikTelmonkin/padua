@@ -5,18 +5,19 @@ namespace App\Http\Controllers;
 use App\Http\Helpers\TransactionValidation;
 use App\Models\Transaction;
 use DateTime;
-use Illuminate\Validation\Validator;
 
 class CsvController
 {
-    public function index() {
+    public function index()
+    {
         $results = [];
         return view('welcome', [
-            'results'=> $results,
+            'results' => $results,
         ]);
     }
 
-    public function uploadFile() {
+    public function uploadFile()
+    {
         $results = [];
         $data = [];
         if (request()->file('csv')) {
@@ -36,11 +37,11 @@ class CsvController
                     ->setTransactionCode($datum[1])
                     ->setCustomerNumber($datum[2])
                     ->setReference($datum[3])
-                    ->setAmount($datum[4]/100)
+                    ->setAmount($datum[4] / 100)
                     ->setValid(($transactionValidationHelper->verifyKey($datum[1]) && $csvValid) ? 'Yes' : 'No');
                 $results[] = $transaction;
             }
-            usort($results, function($a, $b) {
+            usort($results, function ($a, $b) {
                 /* @var $a Transaction */
                 /* @var $b Transaction */
                 $aDate = DateTime::createFromFormat('Y-m-d h:iA', $a->getDate());
@@ -50,7 +51,7 @@ class CsvController
         }
 
         return view('welcome', [
-            'results'=> $results,
+            'results' => $results,
         ]);
     }
 }

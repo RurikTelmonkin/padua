@@ -9,7 +9,8 @@ class TransactionValidationTest extends TestCase
 {
     public TransactionValidation $transactionValidationHelper;
 
-    public function setUp(): void {
+    public function setUp(): void
+    {
         $this->transactionValidationHelper = new TransactionValidation();
         parent::setUp();
     }
@@ -19,11 +20,13 @@ class TransactionValidationTest extends TestCase
      *
      * @return void
      */
-    public function test_transaction_is_valid() {
+    public function test_transaction_is_valid()
+    {
         $this->assertTrue($this->transactionValidationHelper->verifyKey('S98EBHDWG3'));
     }
 
-    public function test_transaction_is_invalid() {
+    public function test_transaction_is_invalid()
+    {
         $this->assertFalse($this->transactionValidationHelper->verifyKey('NUF5V6PT3U'));
     }
 

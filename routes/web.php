@@ -14,5 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [CsvController::class, 'index']);
-Route::post('/upload', [CsvController::class, 'uploadFile']);
+Route::get('/', [
+    CsvController::class,
+    'index'
+]);
+Route::post('/upload', [
+    CsvController::class,
+    'uploadFile'
+]);
